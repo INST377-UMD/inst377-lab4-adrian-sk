@@ -1,0 +1,87 @@
+<!--Adrian Strasser-King 
+    September 22, 2024
+    INST377 Anmol 
+    
+    HTML File for Lab 4 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>INST377 Lab 4</title>
+        <link rel="stylesheet" href="lab4.css">
+    </head>
+    
+    <body>
+        <h1>Adrian's INST377 Lab 4</h1>
+        <div class="container">
+            <div class="row">
+                <div class="column">
+                    <div class="box" id="alert-box">
+                        <h2>Alert Me Section</h2>
+                        <form id="alert-form" onsubmit="alertName(event)">
+                            <input type="text" id="name-input" required>
+                            <button type="submit">Alert Me!</button>
+                        </form>
+                    </div>
+                    <div class="box" id="text-tester-box">
+                        <h2>Text Tester Section</h2>
+                        <form id="text-form" onsubmit="validateText(event)">
+                            <input type="text" id="text-input" required>
+                            <button type="submit">Validate Text</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box" id="color-box">
+                        <h2>Change Color Section</h2>
+                        <button onclick="changePageColor()">Change Color</button>
+                    </div>
+                    <div class="box" id="add-text-box">
+                        <h2>Add Text Section</h2>
+                        <button onclick="addTitleText()">Add Text</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            let currentColor = 'blue';
+
+            function alertName(event) {
+                event.preventDefault();
+                const name = document.getElementById('name-input').value;
+                alert(`Hello ${name}!`);
+            }
+
+            function changePageColor() {
+                if (document.body.style.backgroundColor === 'green') {
+                    document.body.style.backgroundColor = 'blue';
+                } else {
+                    document.body.style.backgroundColor = 'green';
+                }
+            }
+
+            function validateText(event) {
+                event.preventDefault();
+                const text = document.getElementById('text-input').value;
+                const validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                if (validation.test(text)) {
+                    alert('Special characters were entered!');
+                    return false;
+                }
+                return true;
+            }
+
+            function addTitleText() {
+                const heading = document.querySelector('h1');
+                heading.textContent += ' Add Text';
+                if (!document.body.contains(heading)) {
+                    document.body.prepend(heading);
+                }
+            }
+        </script>
+    </body>
+
+</html>
