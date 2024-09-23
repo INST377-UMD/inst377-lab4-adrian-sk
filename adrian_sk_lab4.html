@@ -28,7 +28,7 @@
                     </div>
                     <div class="box" id="text-tester-box">
                         <h2>Text Tester Section</h2>
-                        <form id="text-form" onsubmit="validateText(event)">
+                        <form id="text-form" onsubmit="textTester(event)">
                             <input type="text" id="text-input" required>
                             <button type="submit">Validate Text</button>
                         </form>
@@ -47,7 +47,6 @@
             </div>
         </div>
         <script>
-            let currentColor = 'blue';
 
             function alertName(event) {
                 event.preventDefault();
@@ -63,7 +62,7 @@
                 }
             }
 
-            function validateText(event) {
+            function textTester(event) {
                 event.preventDefault();
                 const text = document.getElementById('text-input').value;
                 const validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
